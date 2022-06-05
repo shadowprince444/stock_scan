@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:stock_scan/app/data/models/stocks_response_model.dart';
 import 'package:stock_scan/app/repositories/stock_repository.dart';
 import 'package:stock_scan/utils/enums/general_enums.dart';
+import 'package:stock_scan/utils/screen_utils/size_config.dart';
 import 'package:stock_scan/utils/screen_utils/widgets/build_notification_snackbar.dart';
 
 class HomeController extends GetxController {
@@ -12,6 +13,7 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
+    SizeConfig().init(Get.context!);
     super.onInit();
     fetchStockList();
   }

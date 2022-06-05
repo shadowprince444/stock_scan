@@ -13,13 +13,12 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return WillPopScope(
       onWillPop: () async => await Future.value(false),
       child: Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
-          title: Text('Stock Scan Parser'),
+          title: const Text('Stock Scan Parser'),
           centerTitle: false,
         ),
         body: ResponsiveSafeArea(
@@ -42,24 +41,25 @@ class HomeView extends GetView<HomeController> {
                         itemBuilder: (context, index) {
                           final stock = controller.stockList[index];
                           return InkWell(
-                              onTap: () {
-                                Get.toNamed(
-                                  Routes.DETAILS,
-                                  arguments: [
-                                    stock,
-                                  ],
-                                );
-                              },
-                              child: CustomListTile(
-                                title: stock.name,
-                                subTitle: stock.tag,
-                                titleTextStyle: AppTextThemes().headline1.copyWith(
-                                      color: Colors.white,
-                                    ),
-                                subTitleTextStyle: AppTextThemes().bodyText2.copyWith(
-                                      color: stock.color,
-                                    ),
-                              ));
+                            onTap: () {
+                              Get.toNamed(
+                                Routes.DETAILS,
+                                arguments: [
+                                  stock,
+                                ],
+                              );
+                            },
+                            child: CustomListTile(
+                              title: stock.name,
+                              subTitle: stock.tag,
+                              titleTextStyle: AppTextThemes().headline1.copyWith(
+                                    color: Colors.white,
+                                  ),
+                              subTitleTextStyle: AppTextThemes().bodyText2.copyWith(
+                                    color: stock.color,
+                                  ),
+                            ),
+                          );
                         },
                       ),
                       CustomDivider(
@@ -70,8 +70,8 @@ class HomeView extends GetView<HomeController> {
                   ),
                 );
               } else {
-                return Center(
-                  child: const CircularProgressIndicator(),
+                return const Center(
+                  child: CircularProgressIndicator(),
                 );
               }
             }),

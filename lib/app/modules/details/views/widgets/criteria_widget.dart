@@ -27,9 +27,9 @@ class CriteriaWidget extends StatelessWidget {
         text: TextSpan(
           style: defaultStyle,
           children: List.generate(criteria.text.split(" ").length, (index) {
-            final splittedText = criteria.text.split(" ")[index];
-            if (criteria.variables.map((e) => e.jsonKey).toList().contains(splittedText)) {
-              var variable = criteria.variables.firstWhere((element) => element.jsonKey == splittedText);
+            final split = criteria.text.split(" ")[index];
+            if (criteria.variables.map((e) => e.jsonKey).toList().contains(split)) {
+              var variable = criteria.variables.firstWhere((element) => element.jsonKey == split);
 
               return TextSpan(
                   text:
@@ -38,10 +38,9 @@ class CriteriaWidget extends StatelessWidget {
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
                       Get.toNamed(Routes.VARIABLE_DETAILS, arguments: [variable]);
-                      print(splittedText);
                     });
             } else {
-              return TextSpan(text: "$splittedText ");
+              return TextSpan(text: "$split ");
             }
           }),
         ),
