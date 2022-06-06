@@ -33,7 +33,7 @@ class CriteriaWidget extends StatelessWidget {
 
               return TextSpan(
                   text:
-                      "( ${variable.type == VariableType.value ? variable.valueList!.values.first.toString() : variable.type == VariableType.indicator ? variable.indicators!.defaultValue.toString() : "null"} ) ",
+                      "( ${variable.type == VariableType.value ? variable.valueList!.values.first.toString() : variable.type == VariableType.indicator ? variable.indicators!.defaultValue.toString() : "undefined"} ) ",
                   style: linkStyle,
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
